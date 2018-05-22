@@ -1,0 +1,23 @@
+#colors{
+    height: 60px;
+    width: 250px;
+    background-color: rgba(255,255,255, 0.8);
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+
+#colors>div{
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    background-color: black;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+
+#colors>div:hover{
+    cursor: pointer;
+}
