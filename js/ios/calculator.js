@@ -44,17 +44,21 @@ function Calculator () {
 
 Calculator.prototype.init = function() {
     var calculatorButtons = document.getElementsByClassName('calculator__button');
-    for (var i in calculatorButtons) {
+    for (var i=0; i< calculatorButtons.length; i++) {
         var button = calculatorButtons[i];
+        var output = document.getElementsByClassName('calculator__output-text')[0];
+        // IF DIGIT
         if ( !isNaN(button.innerHTML-1)) {
             button.onclick = function (event) {
-                var output = document.getElementById('calculator__output-text');
-                console.log('triggered')
-                if (output == 0) {
-                    output = event.target.innerHTML;
+                if (output.innerText == 0) {
+                    output.innerText = event.target.innerHTML;
                 } else {
-                    output += event.target.innerHTML;
+                    output.innerText += event.target.innerHTML;
                 }
+            }
+        } else if (button.innerText == 'C') {
+            button.onclick = function (event) {
+                output.innerText = 0;
             }
         }
     }
