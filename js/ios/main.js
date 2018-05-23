@@ -14,7 +14,7 @@ function menuInit() {
         screen.innerHTML = '';
         screen.appendChild(app);
         (new Calculator()).init();
-        window.navigator.vibrate(2000);
+        navigator.vibrate([500]);
     }
 
 }
@@ -23,7 +23,7 @@ function menuInit() {
 homeButton.onclick = function (event) {
     screen.innerHTML = mainScreenHtml;
     menuInit();
-    window.navigator.vibrate(2000);
+    navigator.vibrate([500]);
 }
 
 menuInit();
