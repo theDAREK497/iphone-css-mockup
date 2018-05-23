@@ -65,6 +65,11 @@
 }
 
 
+#button:hover {
+    cursor: pointer;
+}
+
+
 #button::before{
     background-color: black;
     border-width: 1.5px;

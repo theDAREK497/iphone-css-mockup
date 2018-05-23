@@ -9,13 +9,16 @@
     <link rel="stylesheet" href="css/color_picker_bar.css">
     <link rel="stylesheet" href="css/ios.css">
     <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="css/calculator.css">
 </head>
 <body>
 
-    <h1 class="pretty-selection ">Here is an iphone</h1>
+    <h1 class="slogan-h1 pretty-selection ">Here is an iphone</h1>
     <span></span>
-    <p class="pretty-selection ">A phone with me in front of it</p>
+    <p class="slogan-p pretty-selection ">A phone with me in front of it</p>
 
     <audio src="track.mp3" id="ussr-song"></audio>
     <div id="iphone" class="shadow margin0auto margin-top-30px">
@@ -30,34 +33,31 @@
             <div class="interface">
                 <div class="icons">
                     <div class="icon-row">
-                        <div class="icon"></div>
-                        <div class="icon"></div>
-                        <div class="icon"></div>
-                        <div class="icon"></div>
+                        <div class="icon" id="mail_icon"></div>
+                        <div class="icon" id="app_store_icon"></div>
+                        <div class="icon" id="clock_icon"></div>
+                        <div class="icon" id="maps_icon"></div>
                     </div>
                     <div class="icon-row">
-                        <div class="icon"></div>
-                        <div class="icon"></div>
-                        <div class="icon"></div>
-                        <div class="icon"></div>
+                        <div class="icon" id="calculator_icon"></div>
+                        <div class="icon" id="photos_icon"></div>
+                        <div class="icon" id="videos_icon"></div>
+                        <div class="icon" id="contacts_icon"></div>
                     </div>
                     <div class="icon-row">
-                        <div class="icon"></div>
-                        <div class="icon"></div>
-                        <div class="icon"></div>
-                        <div class="icon"></div>
+                        <div class="icon" id="itunes_icon"></div>
+                        <div class="icon" id="game_center_icon"></div>
+                        <div class="icon" id="notes_icon"></div>
+                        <div class="icon" id="reminders_icon"></div>
                     </div>
                     <div class="icon-row">
-                        <div class="icon"></div>
-                        <div class="icon"></div>
-                        <div class="icon"></div>
-                        <div class="icon"></div>
+                        <div class="icon" id="weather_icon"></div>
+                        <div class="icon" id="calendar_icon"></div>
+                        <div class="icon" id="face_time_icon"></div>
+                        <div class="icon" id="compass_icon"></div>
                     </div>
                     <div class="icon-row">
-                        <div class="icon"></div>
-                        <div class="icon"></div>
-                        <div class="icon"></div>
-                        <div class="icon"></div>
+
                     </div>
                 </div>
                 <div class="marker">
@@ -124,6 +124,7 @@ function setIphoneColor (newColor) {
 }
 
 </script>
-
+<script src="js/ios/calculator.js"></script>
+<script src="js/ios/main.js"></script>
 </body>
 </html>

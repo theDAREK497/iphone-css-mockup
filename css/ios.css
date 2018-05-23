@@ -2,6 +2,10 @@
     height: 100%;
     width: 100%;
     background: linear-gradient(#2CA67C, #3283AD);
+    background-image: url(../img/wallpaper/wallpaper_ios.jpg);
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 
 .icon {
@@ -18,6 +22,10 @@
 
 .icon:hover {
     cursor: pointer;
+}
+
+.icon--empty {
+    background-color: rgba(0,0,0,0);
 }
 
 .icons {
