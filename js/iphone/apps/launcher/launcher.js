@@ -55,5 +55,12 @@ class Launcher {
             calculator.init(screen);
             navigator.vibrate([200]);
         }
+
+        var browser = document.getElementById("safari_icon");
+        browser.onclick = function (event) {
+            var browser = new Browser();
+            browser.init(screen);
+            navigator.vibrate([200]);
+        }
     }
 }

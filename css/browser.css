@@ -8,26 +8,25 @@
 }
 
 .browser__page {
-    height: 90%;
-    background-color: black;
-}
 
-.browser__page-wrapper {
-    height: 133%;
-    width: 133.3%;
+    background-color: black;
+
     -webkit-transform-origin: 0 0;
     -moz-transform-origin: 0 0;
     transform-origin: 0 0;
     -webkit-transform: scale(0.75);
     -moz-transform: scale(0.75);
     transform: scale(0.75);
+
+    height: 118%;
+    width: 133%;
 }
 
 .browser__addres-field {
     float: left;
     height: 100%;
     width: 78%;
-    font-size: 50px;
+    font-size: 30px;
 }
 
 .browser__reload-button {
@@ -36,8 +35,8 @@
     width: 20%;
     background-color: #DADADA;
     border-radius: 100%;
-    font-size: 25px;
-    color: white;
+    font-size: 30px;
+    color: black;
 }
 
 .browser__reload-button:hover {
