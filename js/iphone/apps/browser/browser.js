@@ -7,8 +7,6 @@ var browserComponent = `            <div class="app-container browser">
                     <iframe class="browser__page" src="" frameborder="0"></iframe>
                 
             </div>`
-//<div class="browser__page-wrapper">
-//</div>
 
 function Browser () {
     this.HTML = browserComponent;
