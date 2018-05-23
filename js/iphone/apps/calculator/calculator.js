@@ -1,4 +1,5 @@
 var calculatorComponent  = `<div class="calculator__output-block">
+                    <p class="calculator__accumulator">0</p>
                     <p class="calculator__output-text">0</p>
                 </div>
                 <div class="calculator__buttons">
@@ -45,13 +46,16 @@ function Calculator () {
 Calculator.prototype.init = function() {
 
 
+    var currentOperation = '';
     var calculatorButtons = document.getElementsByClassName('calculator__button');
+    var accumulator = document.getElementsByClassName('calculator__accumulator')[0];
+    var output = document.getElementsByClassName('calculator__output-text')[0];
+    
 
 
     for (var i=0; i< calculatorButtons.length; i++) {
 
         var button = calculatorButtons[i];
-        var output = document.getElementsByClassName('calculator__output-text')[0];
 
         // IF DIGIT
         if ( !isNaN(button.innerHTML-1)) {
@@ -65,9 +69,50 @@ Calculator.prototype.init = function() {
 
         } else if (button.innerText == 'C') {
             button.onclick = function (event) {
+                accumulator.innerHTML = 0;
                 output.innerText = 0;
+                currentOperation = '';
             }
-            
+        } else if (button.innerText == '+') {
+            button.onclick = function () {
+                currentOperation = '+'
+                accumulator.innerHTML -= -output.innerHTML;
+                output.innerHTML = '0';
+            }
+        } else if (button.innerHTML == '-') {
+            button.onclick = function () {
+                currentOperation = '-'
+                accumulator.innerHTML -= -output.innerHTML;
+                output.innerHTML = '0';
+            }
+        } else if (button.innerHTML == '*') {
+            button.onclick = function () {
+                currentOperation = '*'
+                accumulator.innerHTML -= -output.innerHTML;
+                output.innerHTML = '0';
+            }
+        } else if (button.innerHTML == '/') {
+            button.onclick = function () {
+                currentOperation = '/'
+                accumulator.innerHTML -= -output.innerHTML;
+                output.innerHTML = '0';
+            }
+        } else if (button.innerHTML == '=') {
+            button.onclick = function (event) {
+                if (currentOperation == '+') {
+                    output.innerHTML -= -accumulator.innerHTML;
+                    accumulator.innerHTML = 0;
+                } else if (currentOperation == '-') {
+                    output.innerHTML = -(-accumulator.innerHTML) -output.innerHTML;
+                    accumulator.innerHTML = 0;
+                } else if (currentOperation == '*') {
+                    output.innerHTML = (-accumulator.innerHTML) * (-output.innerHTML);
+                    accumulator.innerHTML = 0;
+                } else if (currentOperation == '/') {
+                    output.innerHTML = (-accumulator.innerHTML) / (-output.innerHTML);
+                    accumulator.innerHTML = 0;
+                }
+            }
         }
     }
 };

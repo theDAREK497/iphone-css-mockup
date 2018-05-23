@@ -15,9 +15,13 @@
 
 .calculator__output-text{
     color: white;
-    margin-top: 50px;
+    margin-top: 0px;
     font-family: Tahoma;
     font-size: 40px;
+}
+
+.calculator__accumulator {
+
 }
 
 .calculator__buttons {
