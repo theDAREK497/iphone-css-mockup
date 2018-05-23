@@ -43,10 +43,16 @@ function Calculator () {
 }
 
 Calculator.prototype.init = function() {
+
+
     var calculatorButtons = document.getElementsByClassName('calculator__button');
+
+
     for (var i=0; i< calculatorButtons.length; i++) {
+
         var button = calculatorButtons[i];
         var output = document.getElementsByClassName('calculator__output-text')[0];
+
         // IF DIGIT
         if ( !isNaN(button.innerHTML-1)) {
             button.onclick = function (event) {
@@ -56,10 +62,12 @@ Calculator.prototype.init = function() {
                     output.innerText += event.target.innerHTML;
                 }
             }
+
         } else if (button.innerText == 'C') {
             button.onclick = function (event) {
                 output.innerText = 0;
             }
+            
         }
     }
 };
