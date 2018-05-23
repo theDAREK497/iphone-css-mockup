@@ -25,17 +25,6 @@
 }
 
 .calculator__button {
-    height: 45px;
-    width: 45px;
-    background-color: #DEDEDE;
-    margin: 7px;
-    float: left;
-    border-radius: 100%;
-    font-size: 30px;
-    font-family: Tahoma;
-}
-
-.calculator__button {
     height: 35px;
     width: 35px;
     background-color: #DEDEDE;
@@ -46,6 +35,14 @@
     font-family: Tahoma;
     padding: 5px;
     text-align: center;
+}
+
+.calculator__button::selection {
+    background-color: rgba(0,0,0,0);
+}
+
+.calculator__button::-moz-selection {
+    background-color: rgba(0,0,0,0);
 }
 
 .calculator__button:hover {
