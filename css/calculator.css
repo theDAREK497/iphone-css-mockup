@@ -26,6 +26,7 @@
 
 .calculator__buttons {
     height: 75%;
+    background-color: black;
 }
 
 .calculator__button {
