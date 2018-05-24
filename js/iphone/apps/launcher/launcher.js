@@ -42,11 +42,12 @@ var launcherComponent = `
 
 
 class Launcher {
-    constructor(name) {
-        this.name = name;
+    constructor(iphone) {
+        this.iphone = iphone;
         this.HTML = launcherComponent;
     }
     init (screen) {
+        var that = this;
         // Отрисовываемся
         screen.innerHTML = this.HTML;
         var currentApp = document.getElementById('current-app');
@@ -67,14 +68,14 @@ class Launcher {
         // Вешаем обработчик на иконку браузера
         var browser = document.getElementById("safari_icon");
         browser.onclick = function (event) {
-            var browser = new Browser();
+            var browser = new Browser(that.iphone);
             browser.init(screen);
         }
 
         // Вешаем обработчик на двойной клик по экрану
         // запустит приложение смены обоев
         document.getElementsByClassName('interface')[0].ondblclick = function (event) {
-            var wallpaperApp = new WallpaperApp();
+            var wallpaperApp = new WallpaperApp(that.iphone);
             wallpaperApp.init(screen);
         }
     }

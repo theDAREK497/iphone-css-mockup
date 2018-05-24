@@ -21,15 +21,17 @@
 }
 
 .wallpaper-app__load-button {
-
+    border-radius: 5px;
 }
 
 .wallpaper-app__my-imgs-button {
-    width: 70px;
+    font-size: 12px;
+    border-radius: 5px;
 }
 
 .wallpaper-app__img-src-field {
     width: 50%;
+    border-radius: 5px;
 }
 
 .wallpaper-app__current-wallpaper-laber {

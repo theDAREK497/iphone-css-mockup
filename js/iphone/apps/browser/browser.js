@@ -8,7 +8,8 @@ var browserComponent = `            <div class="app-container browser">
                 
             </div>`
 
-function Browser () {
+function Browser (iphone) {
+    this.iphone = iphone;
     this.HTML = browserComponent;
 }
 

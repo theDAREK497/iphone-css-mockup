@@ -1,3 +1,0 @@
-function Applicaton(html, init) {
-    
-}

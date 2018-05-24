@@ -19,13 +19,16 @@ var wallpaperAppComponent__currentImageBlock = `
 
 
 
-function WallpaperApp () {
+function WallpaperApp (iphone) {
+    this.iphone = iphone;
     this.HTML = wallpaperAppComponent;
+    this.wallpaperAppComponent__currentImageBlock = wallpaperAppComponent__currentImageBlock;
 }
 
 WallpaperApp.prototype.init = function(screen) {
+    var that = this;
     screen.innerHTML = this.HTML;
-    document.getElementsByClassName('wallpaper-app__body')[0].innerHTML = wallpaperAppComponent__currentImageBlock;
+    document.getElementsByClassName('wallpaper-app__body')[0].innerHTML = this.wallpaperAppComponent__currentImageBlock;
     document.getElementsByClassName('wallpaper-app__current-wallpaper-img')[0].src = localStorage["iphone__launcher-wallpaper"];
     var pageState = 'current-image';
 
@@ -45,10 +48,10 @@ WallpaperApp.prototype.init = function(screen) {
         if (imgUrlField.value) {
             localStorage["iphone__launcher-wallpaper"] = imgUrlField.value;
             document.getElementsByClassName('wallpaper-app__current-wallpaper-img')[0].src = localStorage["iphone__launcher-wallpaper"];
-            return iphone__homeButtonClick();
+            return that.iphone.homeButtonClick();
         }
         if (pageState == 'current-image') {
-            return iphone__homeButtonClick();
+            return that.iphone.homeButtonClick();
         }
     }
 
