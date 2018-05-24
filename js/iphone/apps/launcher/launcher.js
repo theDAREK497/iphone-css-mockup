@@ -54,14 +54,12 @@ class Launcher {
         calculator.onclick = function (event) {
             var calculator = new Calculator();
             calculator.init(screen);
-            navigator.vibrate([vibroTime]);
         }
 
         var browser = document.getElementById("safari_icon");
         browser.onclick = function (event) {
             var browser = new Browser();
             browser.init(screen);
-            navigator.vibrate([vibroTime]);
         }
     }
 }
