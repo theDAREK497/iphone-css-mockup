@@ -42,7 +42,8 @@ var launcherComponent = `
 
 
 class Launcher {
-    constructor() {
+    constructor(name) {
+        this.name = name;
         this.HTML = launcherComponent;
     }
     init (screen) {
@@ -53,14 +54,14 @@ class Launcher {
         calculator.onclick = function (event) {
             var calculator = new Calculator();
             calculator.init(screen);
-            navigator.vibrate([200]);
+            navigator.vibrate([vibroTime]);
         }
 
         var browser = document.getElementById("safari_icon");
         browser.onclick = function (event) {
             var browser = new Browser();
             browser.init(screen);
-            navigator.vibrate([200]);
+            navigator.vibrate([vibroTime]);
         }
     }
 }

@@ -21,6 +21,9 @@
     margin-right: 30px;
     border-radius: 5px 5px 0 0;
 }
+#power:hover {
+    cursor: pointer;
+}
 
 
 #screen{

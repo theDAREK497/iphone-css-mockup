@@ -1,0 +1,3 @@
+function Applicaton(html, init) {
+    
+}
