@@ -113,9 +113,11 @@ body{
 
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 600px) {
 
     #colors{
+        position: inherit;
+        float: none;
         height: 60px;
         width: 250px;
         background-color: rgba(255,255,255, 0.8);
