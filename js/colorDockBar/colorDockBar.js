@@ -32,7 +32,13 @@ function setIphoneColor (newColor) {
             newColor = 'yellow';
             break;
     }
-
+    localStorage["iphone_color"] = newColor;
     iphone.style.borderColor = newColor;
     power.style.backgroundColor = newColor;
+}
+
+if (localStorage["iphone_color"]) {
+    setIphoneColor(localStorage["iphone_color"]);
+} else {
+    localStorage["iphone_color"] = 'blue';
 }
