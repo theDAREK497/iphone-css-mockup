@@ -1,0 +1,29 @@
+.wallpaper-app {
+    height: 100%;
+    width: 100%;
+}
+
+.wallpaper-app__load-button {
+
+}
+
+.wallpaper-app__img-src-field {
+    
+}
+
+.wallpaper-app__current-wallpaper-laber {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-family: Tahoma;
+}
+
+.wallpaper-app__current-wallpaper-img {
+    width: 100%;
+}
+
+.wallpaper-app__set-wallpaper-url-laber {
+    background-color: black;
+    color: white;
+    font-family: Tahoma;
+}

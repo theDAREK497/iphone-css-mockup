@@ -74,9 +74,8 @@ class Launcher {
         // Вешаем обработчик на двойной клик по экрану
         // запустит приложение смены обоев
         document.getElementsByClassName('interface')[0].ondblclick = function (event) {
-            console.log('wallpapersApp does not exist');
-            // var wallpapersApp = new WallpapersApp();
-            // wallpapersApp.init();
+            var wallpaperApp = new WallpaperApp();
+            wallpaperApp.init(screen);
         }
     }
 }
