@@ -1,11 +1,13 @@
 body{
-    background-color: #89DDE2;
+    /*background-color: #FF5722;*/
+    background: linear-gradient(#009688, #673AB7);
+    min-height: 100vh;
 }
 
 
 *{
-    /*padding: 0;*/
-    /*margin: 0;*/
+    padding: 0;
+    margin: 0;
 }
 
 
@@ -98,6 +100,15 @@ body{
     span{
         display: block;
         clear:both;
+    }
+
+    #colors {
+        float: left;
+        position: absolute;
+        top: 30vh;
+        left: 1vw;
+        width: 70px;
+        height: 220px;
     }
 
 }

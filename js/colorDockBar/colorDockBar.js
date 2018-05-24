@@ -14,22 +14,23 @@ for (var i=0; i<colors.children.length;i++){
     });
 }
 
+
 function setIphoneColor (newColor) {
     var iphone = document.getElementById('iphone');
     var power = document.getElementById('power');
 
     switch (newColor) {
         case "blue":
-            newColor = '#2066E7';
+            newColor = '#03A9F4';
             break;
         case "red":
-            newColor = '#EF003E';
+            newColor = '#f44336';
             break;
         case "pink":
-            newColor = '#FF007E';
+            newColor = '#E91E63';
             break;
         case "yellow":
-            newColor = 'yellow';
+            newColor = 'FFEB3B';
             break;
     }
     localStorage["iphone_color"] = newColor;
