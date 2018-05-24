@@ -57,7 +57,7 @@ WallpaperApp.prototype.init = function(screen) {
 
     myImgsButton.onclick = function (event) {
         pageState = 'my-images';
-        var imgs = ["0.jpg","1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];
+        var imgs = that.iphone.internalStorage.imgs;
         var imgsComponent = document.createElement('div');
         imgsComponent.classList.add('wallpaper-app__my-imgs-component');
         for (var i=0;i<imgs.length;i++){
