@@ -9,10 +9,11 @@
 
 .icon {
     float: left;
-    height: 45px;
-    width: 44px;
+    height: 43px;
+    width: 42px;
     background-color: rgba(0,0,0,0.2);
     margin:7px;
+    margin-left: 10px;
     border-radius: 10px;
 
     -webkit-background-size: cover;
@@ -23,6 +24,20 @@
 
 .icon:hover {
     cursor: pointer;
+}
+
+.icon__img {
+    height: 100%;
+    width: 100%;
+}
+
+.icon__name {
+    margin-top: -7px;
+    color: white;
+    font-size: 10px;
+    font-family: Tahoma;
+    text-align: center;
+    line-height: 10px;
 }
 
 .icon--empty {

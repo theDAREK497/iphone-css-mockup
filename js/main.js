@@ -1,4 +1,25 @@
-var iphone = new Iphone([], {
-    imgs: ["0.jpg","1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"],
-});
+var iphone = new Iphone(
+    // Список приложений
+    [
+        {
+            name: 'calculator',
+            app: Calculator,
+            position: [1,0],
+        },
+        {
+            name: 'safari',
+            app: Safari,
+            position: [1, 1],
+        },
+        {
+            name: 'wallpaperApp',
+            app: WallpaperApp,
+            position: [-1, 2],
+        }
+    ],
+    // Память айфона
+    {
+        imgs: ["0.jpg","1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"],
+    },
+);
 iphone.init();
