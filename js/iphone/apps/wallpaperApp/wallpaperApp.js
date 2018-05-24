@@ -42,11 +42,18 @@ WallpaperApp.prototype.init = function(screen) {
     }
 
     setButton.onclick = function (event) {
-        localStorage["iphone__launcher-wallpaper"] = imgUrlField.value;
-        document.getElementsByClassName('wallpaper-app__current-wallpaper-img')[0].src = localStorage["iphone__launcher-wallpaper"];
+        if (imgUrlField.value) {
+            localStorage["iphone__launcher-wallpaper"] = imgUrlField.value;
+            document.getElementsByClassName('wallpaper-app__current-wallpaper-img')[0].src = localStorage["iphone__launcher-wallpaper"];
+            return iphone__homeButtonClick();
+        }
+        if (pageState == 'current-image') {
+            return iphone__homeButtonClick();
+        }
     }
 
     myImgsButton.onclick = function (event) {
+        pageState = 'my-images';
         var imgs = ["0.jpg","1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];
         var imgsComponent = document.createElement('div');
         imgsComponent.classList.add('wallpaper-app__my-imgs-component');
@@ -60,6 +67,7 @@ WallpaperApp.prototype.init = function(screen) {
         for (var i=0;i<imgsOnPage.length;i++) {
             var img = imgsOnPage[i];
             img.onclick = function (event) {
+                pageState = 'current-image';
                 localStorage["iphone__launcher-wallpaper"] = event.target.src;
                 document.getElementsByClassName('wallpaper-app__body')[0].innerHTML = wallpaperAppComponent__currentImageBlock;
                 document.getElementsByClassName('wallpaper-app__current-wallpaper-img')[0].src = localStorage["iphone__launcher-wallpaper"];
