@@ -27,6 +27,13 @@
 .wallpaper-app__my-imgs-button {
     font-size: 12px;
     border-radius: 5px;
+    width: 30px;
+}
+
+.wallpaper-app__del-button {
+    font-size: 12px;
+    border-radius: 5px;
+    width: 30px;
 }
 
 .wallpaper-app__img-src-field {

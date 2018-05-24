@@ -74,6 +74,7 @@ class Launcher extends Application
                 var iconRow = document.getElementsByClassName("icon-row")[this.iphone.appsList[i].position[0]];
             }
             var iconCell = iconRow.children[this.iphone.appsList[i].position[1]];
+            iconCell.classList.add('icon--active');
             var appName = this.iphone.appsList[i].name;
 
             var iconImg = document.createElement('img');

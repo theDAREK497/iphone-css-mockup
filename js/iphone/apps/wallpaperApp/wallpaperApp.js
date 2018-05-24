@@ -14,7 +14,8 @@ class WallpaperApp extends Application
                     <p class="wallpaper-app__set-wallpaper-url-laber">Peast new wallpaper url:</p>
                     <input type="text" class="wallpaper-app__img-src-field">
                     <button class="wallpaper-app__load-button">set</button>
-                    <button class="wallpaper-app__my-imgs-button">my imgs</button>
+                    <button class="wallpaper-app__my-imgs-button">my</button>
+                    <button class="wallpaper-app__del-button">del</button>
                 </div>
                 <div class="wallpaper-app__body">
 
@@ -38,6 +39,7 @@ class WallpaperApp extends Application
         var currentWallpaterHolder = document.getElementsByClassName('wallpaper-app__current-wallpaper-img')[0];
         var setButton = document.getElementsByClassName('wallpaper-app__load-button')[0];
         var myImgsButton = document.getElementsByClassName('wallpaper-app__my-imgs-button')[0];
+        var delButton = document.getElementsByClassName('wallpaper-app__del-button')[0];
         var imgUrlField = document.getElementsByClassName('wallpaper-app__img-src-field')[0];
 
 
@@ -79,7 +81,13 @@ class WallpaperApp extends Application
                     document.getElementsByClassName('wallpaper-app__current-wallpaper-img')[0].src = localStorage["iphone__launcher-wallpaper"];
                 }
             }
+        }
 
+        delButton.onclick = function (event) {
+            pageState = 'current-image';
+            localStorage['iphone__launcher-wallpaper'] = '';
+            document.getElementsByClassName('wallpaper-app__body')[0].innerHTML = that.wallpaperAppComponent__currentImageBlock;
+            document.getElementsByClassName('wallpaper-app__current-wallpaper-img')[0].src = localStorage["iphone__launcher-wallpaper"];
         }
     }
 }

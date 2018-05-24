@@ -1,7 +1,8 @@
 class Iphone
 {
-    constructor (appsList, internalStorage)
+    constructor (appsList, internalStorage, settings)
     {
+        this.settings = settings;
         this.appsList = appsList;
         this.internalStorage = internalStorage;
     }
@@ -12,8 +13,12 @@ class Iphone
 
         this.screen = document.getElementById("screen");
 
-        this.isON = false;
-        this.isScreenOn = false;
+        this.isON = this.settings.isON || false;
+        this.isScreenOn = this.settings.isScreenOn || false;
+
+        if (this.isON && this.isScreenOn) {
+            this.loadLauncher();
+        }
 
         this.powerButton = document.getElementById("power");
         this.homeButton = document.getElementById("button");
