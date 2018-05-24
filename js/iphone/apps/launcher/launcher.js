@@ -49,6 +49,14 @@ class Launcher {
     init (screen) {
         // Отрисовываемся
         screen.innerHTML = this.HTML;
+        var currentApp = document.getElementById('current-app');
+        // Загружаем обои
+        if (localStorage && localStorage["iphone__launcher-wallpaper"]) {
+            document.getElementsByClassName('interface')[0].style.backgroundImage = 'url('+localStorage["iphone__launcher-wallpaper"]+')';
+        } else {
+            ;;;
+        }
+
         // Вешаем обработчик на иконку калькулятора
         var calculator = document.getElementById("calculator_icon");
         calculator.onclick = function (event) {
@@ -56,10 +64,19 @@ class Launcher {
             calculator.init(screen);
         }
 
+        // Вешаем обработчик на иконку браузера
         var browser = document.getElementById("safari_icon");
         browser.onclick = function (event) {
             var browser = new Browser();
             browser.init(screen);
+        }
+
+        // Вешаем обработчик на двойной клик по экрану
+        // запустит приложение смены обоев
+        document.getElementsByClassName('interface')[0].ondblclick = function (event) {
+            console.log('wallpapersApp does not exist');
+            // var wallpapersApp = new WallpapersApp();
+            // wallpapersApp.init();
         }
     }
 }

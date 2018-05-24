@@ -1,8 +1,7 @@
 .interface {
     height: 100%;
     width: 100%;
-    background: linear-gradient(#2CA67C, #3283AD);
-    background-image: url(../img/wallpaper/wallpaper_ios.jpg);
+    background: linear-gradient(#2D2D2D, #181818);
     background-position: center;
     -webkit-background-size: cover;
     background-size: cover;
