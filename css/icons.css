@@ -1,4 +1,12 @@
-#phone_icon {
+#calculator_icon {
+    background-image: url(../img/icons/calculator.png);
+}
+
+#safari_icon {
+    background-image: url(../img/icons/safari.png);
+}
+
+/*#phone_icon {
     background-image: url(../img/icons/phone_icon.png);
 }
 
@@ -7,10 +15,6 @@
     background-image: url(../img/icons/messages.png);
 }
 
-
-#safari_icon {
-    background-image: url(../img/icons/safari.png);
-}
 
 #music_icon {
     background-image: url(../img/icons/music.png);
@@ -32,9 +36,7 @@
     background-image: url(../img/icons/maps.png);
 }
 
-#calculator_icon {
-    background-image: url(../img/icons/calculator.png);
-}
+
 
 #photos_icon {
     background-image: url(../img/icons/photos.png);
@@ -78,4 +80,4 @@
 
 #compass_icon {
     background-image: url(../img/icons/compass.png);
-}
+}*/
