@@ -1,6 +1,6 @@
 body{
     /*background-color: #FF5722;*/
-    background: linear-gradient(#009688, #673AB7);
+    background: linear-gradient(#673AB7, #009688);
     min-height: 100vh;
 }
 
@@ -53,8 +53,8 @@ body{
 }
 
 
-.margin-top-10px{
-    margin-top: 10px;
+.margin-top-30px{
+    margin-top: 30px;
 }
 
 
@@ -80,8 +80,19 @@ body{
     height: 20px;
 }
 
+@media only screen and (max-width: 1200px) {
+    #colors {
+        float: left;
+        position: absolute;
+        top: 40%;
+        left: 1vw;
+        width: 70px;
+        height: 220px;
+    }
+}
 
-@media only screen and (max-width: 1250px) {
+
+@media only screen and (max-width: 1000px) {
 
     .slogan-h1{
         position: relative;
@@ -100,15 +111,6 @@ body{
     span{
         display: block;
         clear:both;
-    }
-
-    #colors {
-        float: left;
-        position: absolute;
-        top: 30vh;
-        left: 1vw;
-        width: 70px;
-        height: 220px;
     }
 
 }
