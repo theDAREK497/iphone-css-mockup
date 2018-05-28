@@ -23,6 +23,7 @@ Project structure:
 1. Create new folder **HelloWorld** in js/iphone/apps folder
 2. In **HelloWorld** folder create file **HelloWorld.js** add some image named **HelloWorld.png** (it'll be your app icon) and add HelloWorld.css
 Your folder should look like this:
+
 ![folder and 3 files inside](https://image.ibb.co/eEmS7d/2018_05_28_17_30_48.png)
 3. In **index.html** insert ```<script src="js/iphone/apps/HelloWorld/HelloWorld.js"></script>``` before **main.js** script
 4. In **js/main.js** add new app in apps array
