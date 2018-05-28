@@ -75,4 +75,3 @@ class HelloWorld extends Application
 ![HelloWorld app](https://image.ibb.co/kWgoDJ/2018_05_28_17_28_49.png)
 
 ### [Open in github pages](https://nulnow.github.io/iphone-css-mockup/)
-![screenshot](https://image.ibb.co/bRtRgT/2018_05_18_22_48_25.png)
