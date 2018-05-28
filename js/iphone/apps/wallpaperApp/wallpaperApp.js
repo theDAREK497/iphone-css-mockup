@@ -3,9 +3,7 @@ class WallpaperApp extends Application
     init (screen)
     {
         // Загружаем CSS приложения
-        this.loadCSS({
-            href: 'js/iphone/apps/wallpaperApp/wallpaperApp.css',
-        });
+        this.loadLib('js/iphone/apps/wallpaperApp/wallpaperApp.css');
 
         // Сюда вставляем html приложения
         this.component = `

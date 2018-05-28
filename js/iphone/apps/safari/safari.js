@@ -3,10 +3,7 @@ class Safari extends Application
     init (screen)
     {
         // Загружаем CSS приложения
-        this.loadCSS({
-            data: 'safari',
-            href: 'js/iphone/apps/safari/safari.css',
-        });
+        this.loadLib('js/iphone/apps/safari/safari.css');
 
         // Сюда вставляем html приложения
         this.component = `

@@ -40,6 +40,7 @@ class Iphone
     {
         if (this.isON) {
             this.isScreenOn = true;
+            this.clearCurrentAppLibs();
             this.loadLauncher();
         }
     }
@@ -62,6 +63,14 @@ class Iphone
                 this.isScreenOn = false;
                 document.getElementById('screen').firstElementChild.style.display = 'none';
             }
+        }
+    }
+
+    clearCurrentAppLibs ()
+    {
+        var libs = document.getElementsByClassName('currentAppLib');
+        for (var i=0; i<libs.length; i++) {
+            libs[i].remove();
         }
     }
 }

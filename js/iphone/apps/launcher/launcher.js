@@ -3,10 +3,7 @@ class Launcher extends Application
     init (screen)
     {
         // Загружаем CSS приложения
-        this.loadCSS({
-            data: 'safari',
-            href: 'js/iphone/apps/launcher/ios.css',
-        });
+        this.loadLib('js/iphone/apps/launcher/ios.css');
 
         // Сюда вставляем html приложения
         this.component = `

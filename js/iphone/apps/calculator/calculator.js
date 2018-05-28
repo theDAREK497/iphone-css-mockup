@@ -3,10 +3,7 @@ class Calculator extends Application
     init (screen)
     {
 
-        this.loadCSS({
-            name: 'calculator',
-            href: 'js/iphone/apps/calculator/calculator.css',
-        });
+        this.loadLib('js/iphone/apps/calculator/calculator.css');
 
         this.component = `
             <div class="app-container calculator"><div class="calculator__output-block">
