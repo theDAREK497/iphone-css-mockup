@@ -2,13 +2,11 @@
 
 ### [Open in github pages](https://nulnow.github.io/iphone-css-mockup/)
 
-(Here is nothing useful, just for fun)
-
 This project contains an iphont css mockup and the js class for rapid *iphone apps development.*
 
 Project structure:
 * root /
-    * css/      - some global css (iphone, color picker)
+    * css/      - global css (iphone, color picker)
     * img/      - just favicon
     * js/
         * colorDockBar/ - simple app that allows to cange the iphone case color
