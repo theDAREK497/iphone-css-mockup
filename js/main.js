@@ -15,6 +15,11 @@ var iphone = new Iphone(
             name: 'wallpaperApp',
             app: WallpaperApp,
             position: [-1, 2],
+        },
+        {
+            name: 'snake',
+            app: Snake,
+            position: [1,2],
         }
     ],
     // Память айфона
