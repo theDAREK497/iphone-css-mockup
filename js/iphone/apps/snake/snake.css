@@ -1,0 +1,77 @@
+.snake {
+    background-color: darkseagreen;
+    color: black;
+    position: relative;
+}
+
+.snake__score-block {
+    text-align: left;
+    font-size: 20px;
+    font-family: Tahoma, serif;
+    border-width: 1px;
+    border-color: rgba(0,0,0,0);
+    border-style: solid;
+    height: 25%;
+}
+
+.snake__score-text{
+    color: red;
+    margin-top: 0;
+    font-family: Tahoma, serif;;
+    font-size: 40px;
+}
+
+.snake__buttons{
+    position: absolute;
+    bottom:0;
+    left:0;
+    background-color: darkslategray;
+    height: 30%;
+    width: 100%;
+}
+
+.snake__buttons--up{
+    margin: 0 auto;
+    width: 25%;
+    display: block;
+}
+
+.snake__buttons--down{
+    margin: 0 auto;
+    width: 80%;
+    display: block;
+}
+
+.snake__button {
+    height: 35px;
+    width: 35px;
+    background-color: #DEDEDE;
+    margin: 9px;
+    float: left;
+    border-radius: 100%;
+    font-size: 30px;
+    font-family: Tahoma, serif;
+    padding: 5px;
+    text-align: center;
+    color: black;
+}
+
+.snake__button::selection {
+    background-color: rgba(0,0,0,0);
+}
+
+.snake__button::-moz-selection {
+    background-color: rgba(0,0,0,0);
+}
+
+.snake__button:hover {
+
+    cursor: pointer;
+}
+
+.snake__button--double {
+    width: 85px;
+    text-align: left;
+    padding-left: 15px;
+    border-radius: 30px;
+}
