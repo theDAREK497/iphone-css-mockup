@@ -8,12 +8,12 @@ class Snake extends Application
         // Сюда вставляем html приложения
         this.component = `
             <div class="app-container snake"><div class="snake__score-block">
-                    <p class="snake__score">Score: 0</output></p>
-                </div>
-                <canvas id="snake__canvas"></canvas>
-                <div class="snake__buttons">
-                    <div class="snake__buttons--up">
-                        <div class="snake__button">↑</div>                        
+                    <p class="snake__score"></output></p>
+            </div>
+            <canvas id="snake_gz_canvas" class="snake__canvas" width="200px"  height="200px"></canvas>
+            <div class="snake__buttons">
+                <div class="snake__buttons--up">
+                    <div class="snake__button">↑</div>                        
                     </div>
                     
                     <div class="snake__buttons--down">
@@ -22,74 +22,199 @@ class Snake extends Application
                         <div class="snake__button">→</div>                        
                     </div>
                 </div>
-                </div>`;
+            </div>`;
         // Встраиваем этот HTML в экран
         this.loadComponent(screen);
 
-        var snakeSize = 10,
-        score_value = 0,
-        snake_player,
-        food,
-        tail,
-        dif_terra,
-        terraland,
-        gameloop,
-        direction;
-        const canvas = document.getElementById("snake__canvas");
-        const ctx = canvas.getContext("2d");
-        var snakeButtons = document.getElementsByClassName('snake__button');
-        var score_text = document.getElementsByClassName('snake__score');
-        direction = 'down';
+        const gz_canvas = document.getElementById("snake_gz_canvas");
+        const ctx = gz_canvas.getContext("2d");
+        var snakeButtons = document.getElementsByClassName('snake__button'),
+            score_text = document.getElementsByClassName('snake__score'),
+            direction = 'down',
+            RED_GAME_COLOR = "#ff0f00",
+            BLACK_GAME_COLOR = "#000000",
+            GREY_GAME_COLOR = "#696969",
+            SNAKE_BODY_COLOR = "#65c9da",
+            SNAKE_SKIN_COLOR = "#07088e",
+            SNAK_WALL_COLOR = GREY_GAME_COLOR,
+            SNAKE_BACKGROUND_COLOR = "#67faa1",
+            FOOD_COLOR = RED_GAME_COLOR,
+            FOOD_AURA_COLOR = "#f6b938",
+            ROCK_COLOR = GREY_GAME_COLOR,
+            ROCK_AURA_COLOR = BLACK_GAME_COLOR,
+            snakeSize = 10,
+            score_value = 0,
+            snake_player,
+            food,
+            tail,
+            terraland,
+            rock_count=3,
+            gameloop;
 
-        var bodySnake = function(x, y) {
-            ctx.fillStyle = "#000000";
-            ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
-            ctx.strokeStyle = "#000000";
-            ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
-        };
+        var drawModule_snake = (function () {
 
-        var drawSnake = function() {
-            var length = 4;
-            snake_player = [];
-            for (var i = length-1; i>=0; i--) {
-                snake_player.push({x:i, y:0});
-            }
-        };
+            var bodySnake = function(x, y) {
+                ctx.fillStyle = SNAKE_BODY_COLOR;
+                ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+                ctx.strokeStyle = SNAKE_SKIN_COLOR;
+                ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+            };
 
-        function init_snake() {
-            drawSnake();
-            //    createFood();
-            //    createTerrain();
-            gameloop = setInterval(paint, 80);
-        }
+            var apple = function(x, y) {
+                ctx.fillStyle = FOOD_AURA_COLOR;
+                ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+                ctx.fillStyle = FOOD_COLOR;
+                ctx.fillRect(x*snakeSize+1, y*snakeSize+1, snakeSize-2, snakeSize-2);
+            };
 
-        var paint = function(){
-            ctx.shadowBlur = 0;
-            ctx.fillStyle = "#000000";
-            ctx.strokeStyle = "#000000";
-            ctx.strokeRect(0, 0, canvas.width, canvas.height);
+            var terrain = function(x, y) {
+                ctx.fillStyle = ROCK_AURA_COLOR;
+                ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+                ctx.fillStyle = ROCK_COLOR;
+                ctx.fillRect(x*snakeSize+1, y*snakeSize+1, snakeSize-2, snakeSize-2);
+            };
 
-            var snakeX = snake_player[0].x;
-            var snakeY = snake_player[0].y;
+            var drawSnake = function() {
+                var length = 4;
+                snake_player = [];
+                for (var i = length-1; i>=0; i--) {
+                    snake_player.push({x:i, y:0});
+                }
+            };
 
-            if (direction === 'right') {
-                snakeX++; }
-            else if (direction === 'left') {
-                snakeX--; }
-            else if (direction === 'up') {
-                snakeY--;
-            } else if(direction === 'down') {
-                snakeY++; }
+            var paint = function(){
+                ctx.fillStyle = SNAKE_BACKGROUND_COLOR;
+                ctx.fillRect(0, 0, gz_canvas.width, gz_canvas.height);
+                ctx.strokeStyle = SNAK_WALL_COLOR;
+                ctx.strokeRect(0, 0, gz_canvas.width, gz_canvas.height);
 
-            if (snakeX === -1 || snakeX === canvas.width/snakeSize || snakeY === -1 || snakeY === canvas.height/snakeSize ) {
-                //restart game
-                ctx.clearRect(0,0,canvas.width,canvas.height);
-                gameloop = clearInterval(gameloop);
-                alert("GAME OVER");
-                document.location.reload();
-            }
-            score_text.innerText = 'Score: '+score_value;
-        };
+                var snakeX = snake_player[0].x;
+                var snakeY = snake_player[0].y;
+
+                if (direction === 'right') {
+                    snakeX++; }
+                else if (direction === 'left') {
+                    snakeX--; }
+                else if (direction === 'up') {
+                    snakeY--;
+                } else if(direction === 'down') {
+                    snakeY++; }
+
+                if (snakeX === -1 || snakeX === gz_canvas.width/snakeSize || snakeY === -1 || snakeY === gz_canvas.height/snakeSize || checkCollision(snakeX, snakeY, snake_player)) {
+                    //restart game
+                    ctx.clearRect(0,0,gz_canvas.width,gz_canvas.height);
+                    gameloop = clearInterval(gameloop);
+                    alert("GAME OVER");
+                    document.location.reload();
+                    return;
+                }
+
+                for (var j = rock_count; j>=0; j--) {
+                    if (snakeX === terraland[j].x && snakeY === terraland[j].y) {
+                        //restart game
+                        ctx.clearRect(0,0,gz_canvas.width,gz_canvas.height);
+                        gameloop = clearInterval(gameloop);
+                        alert("GAME OVER");
+                        document.location.reload();
+                        return;
+                    }
+                }
+
+                if(snakeX === food.x && snakeY === food.y) {
+                    tail = {x: snakeX, y: snakeY}; //Create a new head instead of moving the tail
+                    score_value ++;
+
+                    createFood(); //Create new food
+                } else {
+                    tail = snake_player.pop(); //pops out the last cell
+                    tail.x = snakeX;
+                    tail.y = snakeY;
+                }
+                //The snake can now eat the food.
+                snake_player.unshift(tail); //puts back the tail as the first cell
+
+                for(var i = 0; i < snake_player.length; i++) {
+                    bodySnake(snake_player[i].x, snake_player[i].y);
+                }
+
+                for (var j = rock_count; j>=0; j--) {
+                    terrain(terraland[j].x, terraland[j].y);
+                }
+
+                apple(food.x, food.y);
+                score_text.innerText = 'Score: ' + score_value;
+            };
+
+            var createFood = function() {
+                food = {
+                    x: Math.floor((Math.random() * (gz_canvas.width /10-1)) + 1),
+                    y: Math.floor((Math.random() * (gz_canvas.height/10-1)) + 1)
+                };
+
+                for (var i=0; i>snake_player.length; i++) {
+                    var snakeX = snake_player[i].x;
+                    var snakeY = snake_player[i].y;
+
+                    if (food.x===snakeX && food.y === snakeY || food.y === snakeY && food.x===snakeX) {
+                        food.x = Math.floor((Math.random() * (gz_canvas.width /10-1)) + 1);
+                        food.y = Math.floor((Math.random() * (gz_canvas.height/10-1)) + 1);
+                        for (var j = rock_count; j>=0; j--) {
+                            if (food.x===terraland[j].x && food.y === terraland[j].y || food.y === terraland[j].y && food.x===terraland[j].x) {
+                                food.x = Math.floor((Math.random() * (gz_canvas.width /10-1)) + 1);
+                                food.y = Math.floor((Math.random() * (gz_canvas.height/10-1)) + 1);
+                            }
+                        }
+                    }
+                }
+            };
+
+            var createTerrain = function() {
+                terraland = [];
+                for (var j = rock_count; j>=0; j--) {
+                    terraland[j] = {
+                        x: Math.floor((Math.random() * (gz_canvas.width /10-1)) + 1),
+                        y: Math.floor((Math.random() * (gz_canvas.height/10-1)) + 1)
+                    };
+                    for (var i=0; i>snake_player.length; i++) {
+                        var snakeX = snake_player[i].x;
+                        var snakeY = snake_player[i].y;
+                        if (terraland[j].x===snakeX && terraland[j].y === snakeY || terraland[j].y === snakeY && terraland[j].x===snakeX) {
+                            terraland[j].x = Math.floor((Math.random() * (gz_canvas.width /10-1)) + 1);
+                            terraland[j].y = Math.floor((Math.random() * (gz_canvas.height/10-1)) + 1);
+                            if (terraland[j].x===food.x && terraland[j].y === food.y || terraland[j].y === food.y && terraland[j].x===food.x) {
+                                terraland[j].x = Math.floor((Math.random() * (gz_canvas.width /10-1)) + 1);
+                                terraland[j].y = Math.floor((Math.random() * (gz_canvas.height/10-1)) + 1);
+                            }
+                        }
+                    }
+                }
+            };
+
+            var checkCollision = function(x, y, array) {
+                for(var i = 0; i < array.length; i++) {
+                    if(array[i].x === x && array[i].y === y)
+                        return true;
+                }
+                return false;
+            };
+
+            var init = function(){
+                direction = 'down';
+                drawSnake();
+                createFood();
+                createTerrain();
+                gameloop = setInterval(paint, 120);
+            };
+
+
+            return {
+                init : init
+            };
+
+
+        }());
+
+        drawModule_snake.init();
 
         //управление
         for (var i=0; i< snakeButtons.length; i++) {
@@ -129,6 +254,5 @@ class Snake extends Application
                 }
             }
         }
-        init_snake();
     }
 }
