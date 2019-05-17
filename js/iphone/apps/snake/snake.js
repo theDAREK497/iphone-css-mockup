@@ -7,15 +7,20 @@ class Snake extends Application
 
         // Сюда вставляем html приложения
         this.component = `
-            <div class="app-container snake"><div class="snake__score-block">
-                    <p class="snake__score"></output></p>
-            </div>
-            <canvas id="snake_gz_canvas" class="snake__canvas" width="200px"  height="200px"></canvas>
-            <div class="snake__buttons">
-                <div class="snake__buttons--up">
-                    <div class="snake__button">↑</div>                        
+            <div class="app-container snake">
+                <div class="snake__score-block">
+                    <p class="snake__score-text">Go snaked!</p>                    
+                </div>
+                <canvas id="snake_gz_canvas" class="snake__canvas" width="200px"  height="200px"></canvas>
+            
+                <div class="snake__buttons">               
+                    <div class="snake__buttons--up">
+                        <div class="snake__button" id="snake_exit_btn">«</div> 
+                        <div class="snake__button">↑</div>    
+                        <div class="snake__button snake__button--start" id="snake_start_btn">GO!</div>  
+                        <div class="snake__button snake__button--start" id="snake_start_btn_clap">▬▬</div>                       
                     </div>
-                    
+                 
                     <div class="snake__buttons--down">
                         <div class="snake__button">←</div>
                         <div class="snake__button">↓</div>
@@ -29,7 +34,10 @@ class Snake extends Application
         const gz_canvas = document.getElementById("snake_gz_canvas");
         const ctx = gz_canvas.getContext("2d");
         var snakeButtons = document.getElementsByClassName('snake__button'),
-            score_text = document.getElementsByClassName('snake__score'),
+            start_btn = document.getElementById('snake_start_btn'),
+            start_btn_clap = document.getElementById('snake_start_btn_clap'),
+            exit_btn = document.getElementById('snake_exit_btn'),
+            score_text = document.getElementsByClassName('snake__score-text')[0],
             direction = 'down',
             RED_GAME_COLOR = "#ff0f00",
             BLACK_GAME_COLOR = "#000000",
@@ -49,6 +57,7 @@ class Snake extends Application
             tail,
             terraland,
             rock_count=3,
+            timeout_of_snek=120,
             gameloop;
 
         var drawModule_snake = (function () {
@@ -88,6 +97,9 @@ class Snake extends Application
                 ctx.strokeStyle = SNAK_WALL_COLOR;
                 ctx.strokeRect(0, 0, gz_canvas.width, gz_canvas.height);
 
+                start_btn.style.display = 'none';
+                start_btn_clap.style.display = 'block';
+
                 var snakeX = snake_player[0].x;
                 var snakeY = snake_player[0].y;
 
@@ -100,38 +112,40 @@ class Snake extends Application
                 } else if(direction === 'down') {
                     snakeY++; }
 
-                if (snakeX === -1 || snakeX === gz_canvas.width/snakeSize || snakeY === -1 || snakeY === gz_canvas.height/snakeSize || checkCollision(snakeX, snakeY, snake_player)) {
-                    //restart game
+                if (snakeX === -1 || snakeX === gz_canvas.width/snakeSize || snakeY === -1
+                    || snakeY === gz_canvas.height/snakeSize || checkCollision(snakeX, snakeY, snake_player)) {
+                    //рестарт игры
+                    start_btn.style.display = 'block';
+                    start_btn_clap.style.display = 'none';
                     ctx.clearRect(0,0,gz_canvas.width,gz_canvas.height);
-                    gameloop = clearInterval(gameloop);
-                    alert("GAME OVER");
-                    document.location.reload();
+                    clearInterval(gameloop);
+                    gameloop=null;
                     return;
                 }
 
                 for (var j = rock_count; j>=0; j--) {
                     if (snakeX === terraland[j].x && snakeY === terraland[j].y) {
-                        //restart game
+                        start_btn.style.display = 'block';
+                        start_btn_clap.style.display = 'none';
                         ctx.clearRect(0,0,gz_canvas.width,gz_canvas.height);
-                        gameloop = clearInterval(gameloop);
-                        alert("GAME OVER");
-                        document.location.reload();
+                        clearInterval(gameloop);
+                        gameloop=null;
                         return;
                     }
                 }
 
                 if(snakeX === food.x && snakeY === food.y) {
-                    tail = {x: snakeX, y: snakeY}; //Create a new head instead of moving the tail
+                    tail = {x: snakeX, y: snakeY};
                     score_value ++;
 
-                    createFood(); //Create new food
+                    createFood();
                 } else {
-                    tail = snake_player.pop(); //pops out the last cell
+                    tail = snake_player.pop();
                     tail.x = snakeX;
                     tail.y = snakeY;
                 }
-                //The snake can now eat the food.
-                snake_player.unshift(tail); //puts back the tail as the first cell
+
+                snake_player.unshift(tail);
 
                 for(var i = 0; i < snake_player.length; i++) {
                     bodySnake(snake_player[i].x, snake_player[i].y);
@@ -144,7 +158,7 @@ class Snake extends Application
                 apple(food.x, food.y);
                 score_text.innerText = 'Score: ' + score_value;
             };
-
+            //Генерация еды
             var createFood = function() {
                 food = {
                     x: Math.floor((Math.random() * (gz_canvas.width /10-1)) + 1),
@@ -159,7 +173,8 @@ class Snake extends Application
                         food.x = Math.floor((Math.random() * (gz_canvas.width /10-1)) + 1);
                         food.y = Math.floor((Math.random() * (gz_canvas.height/10-1)) + 1);
                         for (var j = rock_count; j>=0; j--) {
-                            if (food.x===terraland[j].x && food.y === terraland[j].y || food.y === terraland[j].y && food.x===terraland[j].x) {
+                            if (food.x===terraland[j].x && food.y === terraland[j].y ||
+                                food.y === terraland[j].y && food.x===terraland[j].x) {
                                 food.x = Math.floor((Math.random() * (gz_canvas.width /10-1)) + 1);
                                 food.y = Math.floor((Math.random() * (gz_canvas.height/10-1)) + 1);
                             }
@@ -167,7 +182,7 @@ class Snake extends Application
                     }
                 }
             };
-
+            //Генерация камней
             var createTerrain = function() {
                 terraland = [];
                 for (var j = rock_count; j>=0; j--) {
@@ -189,7 +204,7 @@ class Snake extends Application
                     }
                 }
             };
-
+            //физика
             var checkCollision = function(x, y, array) {
                 for(var i = 0; i < array.length; i++) {
                     if(array[i].x === x && array[i].y === y)
@@ -197,29 +212,30 @@ class Snake extends Application
                 }
                 return false;
             };
-
+            //инициализация
             var init = function(){
+                score_value=0;
+                timeout_of_snek=120;
                 direction = 'down';
                 drawSnake();
                 createFood();
                 createTerrain();
-                gameloop = setInterval(paint, 120);
+                gameloop = setInterval(paint, timeout_of_snek);
             };
 
-
             return {
-                init : init
+                init : init,
             };
 
 
         }());
-
-        drawModule_snake.init();
-
+        //кнопка старта
+        exit_btn.addEventListener("click", function(){ iphone.homeButtonClick ();});
+        start_btn.addEventListener("click", function(){ drawModule_snake.init();});
+        start_btn_clap.style.display = 'none';
         //управление
         for (var i=0; i< snakeButtons.length; i++) {
             var button = snakeButtons[i];
-            // IF DIGIT
             if ( !isNaN(button.innerHTML-1)) {
                 button.onclick = function (event) {
                     if (score_text.innerText === 0) {
@@ -230,25 +246,25 @@ class Snake extends Application
                 }
             } else if (button.innerText === '←') {
                 button.onclick = function (event) {
-                    if (direction !== 'left') {
+                    if (direction !== 'right') {
                         direction = 'left';
                     }
                 }
             } else if (button.innerText === '→') {
                 button.onclick = function () {
-                    if (direction !== 'right') {
+                    if (direction !== 'left') {
                         direction = 'right';
                     }
                 }
             } else if (button.innerText === '↓') {
                 button.onclick = function (event) {
-                    if (direction !== 'down') {
+                    if (direction !== 'up') {
                         direction = 'down';
                     }
                 }
             } else if (button.innerText === '↑') {
                 button.onclick = function () {
-                    if (direction !== 'up') {
+                    if (direction !== 'down') {
                         direction = 'up';
                     }
                 }
