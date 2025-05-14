@@ -1,6 +1,6 @@
 # Iphone js app platform 
 
-### [Open in github pages](https://nulnow.github.io/iphone-css-mockup/)
+### [Open in github pages](https://thedarek497.github.io/iphone-css-mockup/)
 
 This project contains an iphont css mockup and the js class for rapid *iphone apps development.*
 
@@ -73,5 +73,3 @@ class HelloWorld extends Application
 ![iphone with HelloWorld app inside](https://image.ibb.co/bQaTVy/2018_05_28_17_26_43.png)
 3. Click on your app and:
 ![HelloWorld app](https://image.ibb.co/kWgoDJ/2018_05_28_17_28_49.png)
-
-### [Open in github pages](https://nulnow.github.io/iphone-css-mockup/)
