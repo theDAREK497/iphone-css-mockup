@@ -71,5 +71,6 @@ class HelloWorld extends Application
 ```
 3. Open index.html in your browser and you'll get this:
 ![iphone with HelloWorld app inside](https://image.ibb.co/bQaTVy/2018_05_28_17_26_43.png)
-3. Click on your app and:
+
+4. Click on your app and:
 ![HelloWorld app](https://image.ibb.co/kWgoDJ/2018_05_28_17_28_49.png)
